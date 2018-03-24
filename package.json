@@ -4,5 +4,12 @@
   "main": "app.js",
   "repository": "git@github.com:scaasic/headline-analytics.git",
   "author": "Olivia Isaacs <olivia@scaasic.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
 }
