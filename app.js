@@ -15,7 +15,8 @@ db.on("error", err => console.log("Error: " + err));
 
 // Add routes
 app.use(express.static('public'));
-app.use('/api', require('./api.js')(db));
+app.use('/api', require('./routes/api.js')(db));
+app.use('/admin', require('./routes/admin.js')(db));
 app.get('*', (req, res) => {
   res.sendStatus(404);
 });
