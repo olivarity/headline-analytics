@@ -32,11 +32,15 @@ function route(db) {
 
     // Log button press
     .post(function (req, res) {
-      let id = req.body.id;
+      const id = req.body.id;
+      
       if(!id) 
         return res.sendStatus(400);
       
+      const timestamp = { buttonId: id,  timestamp: Date.now() }
+      db.lpush('clicks', JSON.stringify(timestamp));
       db.hincrby(id, "clickedCount", 1);
+
       res.sendStatus(200);
     });
 
