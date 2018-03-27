@@ -36,6 +36,7 @@ $(document).ready(function() {
         contentType: "application/json",
         data: '{ "id": "' + id +'" }' 
       });
+      $(this).attr('disabled', true).text('Clicked!');
     }
     console.log('Button ' + id + ' clicked!');
   });
