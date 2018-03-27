@@ -36,7 +36,7 @@ function route(db) {
       if(!id) 
         return res.sendStatus(400);
       
-      id.hincrby(id, "clickedCount", 1);
+      db.hincrby(id, "clickedCount", 1);
       res.sendStatus(200);
     });
 
