@@ -9,6 +9,7 @@ const db = redis.createClient(process.env.REDIS_URL);
 
 // Middleware config
 app.use(morgan('tiny'));
+db.on("error", err => console.log("Error: " + err));
 
 // Add routes
 app.use(express.static('public'));
