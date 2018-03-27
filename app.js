@@ -1,6 +1,7 @@
 // Module imports
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const redis = require('redis');
 
 // Create instances
@@ -9,6 +10,7 @@ const db = redis.createClient(process.env.REDIS_URL);
 
 // Middleware config
 app.use(morgan('tiny'));
+app.use(bodyParser.json());
 db.on("error", err => console.log("Error: " + err));
 
 // Add routes

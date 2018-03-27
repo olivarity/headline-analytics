@@ -1,8 +1,9 @@
 function route(db) {
   const router = require('express').Router(); 
   router.route('/')
+
+    // Get a random headline/button
     .get(function (req, res) {
-      // Get a random headline/button
       db.keys('data:*', function(err, keys) {
         if(!err) {
           const index = Math.floor(Math.random() * keys.length);
@@ -28,9 +29,15 @@ function route(db) {
         }
       });
     })
+
+    // Log button press
     .post(function (req, res) {
-      // Log a button click
+      let id = req.body.id;
+      if(!id) 
+        return res.sendStatus(400);
       
+      id.hincrby(id, "clickedCount", 1);
+      res.sendStatus(200);
     });
 
   return router;

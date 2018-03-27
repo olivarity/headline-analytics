@@ -6,6 +6,7 @@
   "author": "Olivia Isaacs <olivia@scaasic.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
     "redis": "^2.8.0"
