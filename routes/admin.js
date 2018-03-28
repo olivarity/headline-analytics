@@ -10,6 +10,25 @@ function route(db) {
     });
   });
 
+  router.get('/headlines', function(req, res) {
+    db.keys('data:*', function (err, keys) {
+      if(err)
+        return res.sendStatus(500).end();
+      
+      let objects = {};
+      let callsRemaining = keys.length; 
+
+      for(let i = 0; i < callsRemaining; i++) {
+        const key = keys[i];
+        db.hgetall(key, (err, val) => {
+          objects[key] = err ? 'Error' : val;     
+          callsRemaining--;
+          if(callsRemaining <= 0)
+            res.json(objects);
+        });
+      }
+    });
+  });
   return router;
 }
 
